@@ -18,8 +18,10 @@ def main() -> None:
     assert len(words) == 6, f"story must be exactly six words, got {len(words)}"
     assert 1 <= len(STORY) <= 60, "story must be 1-60 characters"
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    # No trailing newline: the file is exactly the 38-byte story.
+    # Ranking breaks exact ties on fewer bytes, so every byte counts.
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(STORY + "\n")
+        f.write(STORY)
     print(STORY)
 
 
